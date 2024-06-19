@@ -1,0 +1,39 @@
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <label>
+      What type of restaurant? (optional):
+      <input [(ngModel)]="keyword" name="keyword" />
+    </label>
+    <label>
+      Maximum $s, 0 to 4? (optional):
+      <input [(ngModel)]="maxprice" name="maxprice" type="number" min="0" max="4" />
+    </label>
+    <label>
+      Does it have to be open now? (Y or N, optional):
+      <input type="checkbox" [(ngModel)]="opennow" name="opennow" />
+    </label>
+    <label>
+      Maximum distance willing to go in miles? (optional):
+      <input [(ngModel)]="radius" name="radius" type="number" />
+    </label>
+    <button type="submit">Search</button>
+  </form>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div *ngIf="restaurants.length > 0">
+    <h2>Total Number of Results: {{ restaurants.length }}</h2>
+    <div *ngFor="let restaurant of restaurants">
+      <h3>{{ restaurant.name }}</h3>
+      <p>Business Status: {{ restaurant.businessStatus }}</p>
+      <p>Open Now: {{ restaurant.openNow }}</p>
+      <p>Price Level: {{ restaurant.priceLevel }}</p>
+      <p>Rating: {{ restaurant.rating }}</p>
+      <p>Total User Ratings: {{ restaurant.totalUserRatings }}</p>
+      <p>Distance: {{ restaurant.distance | number: '1.1-1' }} miles</p>
+      <p>Address: {{ restaurant.address }}</p>
+    </div>
+  </div>
+</div>
+
