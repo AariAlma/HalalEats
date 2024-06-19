@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
+//@Component({
 @Component({
-  selector: 'app-login',
+selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: ['./login.component.css']
+  styleUrls: ['./login.component.css']
 })
+
+interface LoginResponse {
+  success: boolean;
+  message?: string;
+}
+
 export class LoginComponent {
   credentials: any = {};
 
@@ -12,11 +20,11 @@ export class LoginComponent {
 
   onSubmit() {
     this.authService.login(this.credentials).subscribe(
-      response => {
+      (response: LoginResponse) => {
         console.log('Login successful', response);
         // successful login (storing token and redirecting)
       },
-      error => {
+      (error: any) => {
         console.error('Login failed', error);
       }
     );
