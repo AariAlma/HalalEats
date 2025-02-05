@@ -1,6 +1,6 @@
 بسم الله الرحمن الرحيم
 
-# HalalEats
+# CustomBites
 
 
 ## Development server
