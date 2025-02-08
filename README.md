@@ -1,6 +1,6 @@
 بسم الله الرحمن الرحيم
 
-# CustomBites
+# DineSafe
 
 
 ## Development server
